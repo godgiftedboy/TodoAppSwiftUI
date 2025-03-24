@@ -8,7 +8,7 @@
 
 import Foundation
 import FirebaseAuth
-
+import FirebaseFirestore
 class RegisterViewViewModel:ObservableObject{
     @Published var name="";
     @Published var email="";
@@ -24,6 +24,7 @@ class RegisterViewViewModel:ObservableObject{
         }
        
         Auth.auth().createUser(withEmail: email, password: password, completion: {
+            // Use [weak self] when self might be deallocated before the closure executes (e.g., network calls, Firebase calls, animations).
             [weak self] result, error in
             guard let userId = result?.user.uid else{
                 return
@@ -38,6 +39,11 @@ class RegisterViewViewModel:ObservableObject{
     
     private func insertUserRecord(id: String){
         let newUser =   User(id: id, name: name, email: email, joined: Date().timeIntervalSince1970);
+        let db = Firestore.firestore();
+        db.collection("user")
+            .document(id)
+            .setData(newUser.asDictionary())
+        
         
         
     }
