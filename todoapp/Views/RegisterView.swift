@@ -24,12 +24,20 @@ struct RegisterView: View {
             Form{
                 TextField("Full name",text: $name)
                     .textFieldStyle(DefaultTextFieldStyle())
+                    .autocorrectionDisabled()
                 
                 TextField("Email address",text: $email)
                     .textFieldStyle(DefaultTextFieldStyle())
+                    .autocorrectionDisabled()
+                    .autocapitalization(.none)
                 SecureField("Password",text: $password)
                     .textFieldStyle(DefaultTextFieldStyle())
+                CustomButton(title: "Register", background: .green){
+                    //Register Action
+                }
             }.offset(y:-50)
+            
+            
             
             
             Spacer()
