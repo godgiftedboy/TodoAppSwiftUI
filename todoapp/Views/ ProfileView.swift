@@ -13,6 +13,42 @@ struct _ProfileView: View {
         //Trailing Closure syntax
         NavigationView{
             VStack{
+                //Avatar
+                Image(systemName: "person.circle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(.blue)
+                    .frame(width: 125,height: 125)
+                    .padding()
+            
+                //Info: Name, Email
+                VStack(alignment: .leading, content: {
+                    HStack{
+                        Text("Name")
+                            .bold()
+                        Text("Usernmae")
+                    }.padding()
+                    HStack{
+                        Text("Email")
+                            .bold()
+                        Text("Usernmae")
+                    }.padding()
+                    HStack{
+                        Text("Member Since")
+                            .bold()
+                        Text("Usernmae")
+                    }.padding()
+                }
+                )
+                
+                //Sign out
+                CustomButton(title: "Logout", background: .blue, action: {
+                    //logout action
+                })
+                .frame(height: 80)
+                .padding()
+                
+                Spacer()
                 
             }.navigationTitle("Profile")
         }
