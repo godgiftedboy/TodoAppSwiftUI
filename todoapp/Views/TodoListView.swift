@@ -34,6 +34,7 @@ struct TodoListView: View {
             }
             .sheet(isPresented: $viewModel.showingNewItemView, content: {
                 NewItemView(
+                    //passing binding to child view
                     newItemPresented: $viewModel.showingNewItemView
                 )
                 

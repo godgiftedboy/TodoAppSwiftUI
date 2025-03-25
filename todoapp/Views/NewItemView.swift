@@ -11,6 +11,7 @@ struct NewItemView: View {
     
     @StateObject var viewModel = NewItemViewViewModel()
     
+    //passed binding from parent view
     @Binding var newItemPresented: Bool;
     var body: some View {
         VStack{
@@ -39,6 +40,7 @@ struct NewItemView: View {
 }
 
 #Preview {
+    //passed binding in a preview with getter and setter
     NewItemView(newItemPresented: Binding(get: {
         return true
     }, set: {
