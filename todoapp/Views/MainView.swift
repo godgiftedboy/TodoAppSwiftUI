@@ -12,7 +12,20 @@ struct MainView: View {
     var body: some View {
         if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty{
             //signed in
-            TodoListView() 
+            
+            
+            TabView{
+                TodoListView()
+                    .tabItem{
+                        Label("Home",systemImage: "house")
+                    }
+                _ProfileView()
+                    .tabItem{
+                        Label("Profile",systemImage: "person.circle")
+                    }
+                
+            }
+            
         }else{
             LoginView()
         }
