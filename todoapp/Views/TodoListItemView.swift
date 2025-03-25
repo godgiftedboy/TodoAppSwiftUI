@@ -24,10 +24,11 @@ struct TodoListItemView: View {
             Button(
                 action:{
                     //done action
-                    viewModel.updateCheck(id: item.id);
+                    viewModel.updateCheck(item: item);
                 },
                 label: {
                     Image( systemName: item.isDone ? "checkmark.circle.fill" : "circle")
+                        .foregroundColor(.blue)
                 })
         }
     }
