@@ -9,7 +9,9 @@ import SwiftUI
 import FirebaseFirestore
 
 struct TodoListView: View {
-    @StateObject var viewModel = TodoListViewViewModel();
+    //instead of creating a instance of view model here as in other views.
+    //it is used as wrapped property below in constructor
+    @StateObject var viewModel: TodoListViewViewModel;
     @FirestoreQuery var items: [TodoListItem]
     
     private let userId: String;
@@ -21,6 +23,11 @@ struct TodoListView: View {
         // user/<id>/todos/<entries>
         //underscore is conevtion for property wrapper -  @FirestoreQuery is a property wrapper.
         self._items = FirestoreQuery(collectionPath: "user/\(userId)/todos")
+        //wrapped property viewModel with wrapped value of viewModel instance.
+        self._viewModel = StateObject(
+            wrappedValue: TodoListViewViewModel(userId: userId))
+        
+        //wrapped property is used inorder to pass userId on constructor and use the userId for delete operation.
  
     }
     var body: some View {
@@ -32,6 +39,7 @@ struct TodoListView: View {
                         .swipeActions(content: {
                             Button{
                                 //Delete action
+                                viewModel.delete(id: item.id)
                                 
                             } label: {
                                 Text("Delete")

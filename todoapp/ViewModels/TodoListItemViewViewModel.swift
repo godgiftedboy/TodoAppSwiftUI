@@ -10,4 +10,7 @@ import Foundation
 class TodoListItemViewViewModel: ObservableObject{
     init(){
     }
+    func updateCheck(id: String){
+        
+    }
 }
