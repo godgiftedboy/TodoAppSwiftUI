@@ -22,10 +22,11 @@ class RegisterViewViewModel:ObservableObject{
         guard validate() else {
             return
         }
-       
+        
+        //completion is a closure passed as argument in a function createUser.
         Auth.auth().createUser(withEmail: email, password: password, completion: {
             // Use [weak self] when self might be deallocated before the closure executes (e.g., network calls, Firebase calls, animations).
-            [weak self] result, error in
+            [weak self] result, error -> Void in
             guard let userId = result?.user.uid else{
                 return
             }
@@ -33,8 +34,6 @@ class RegisterViewViewModel:ObservableObject{
         })
 
         errorMsg =  ""
-        
-        print("Login Sucess")
     }
     
     private func insertUserRecord(id: String){
