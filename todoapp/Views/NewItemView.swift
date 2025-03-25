@@ -29,11 +29,23 @@ struct NewItemView: View {
                 
                 CustomButton(title: "Save", background: Color.pink, action: {
                     //save action
-                    viewModel.save();
-                    newItemPresented = false;
+                    
+                    if(viewModel.canSave){
+                        viewModel.save();
+                        newItemPresented = false;
+                    }else{
+                        viewModel.showAlert = true;
+                    }
+                    
                     
                 })
                 .padding()
+            }
+            .alert(isPresented: $viewModel.showAlert){
+                Alert(
+                    title: Text("Error") ,
+                    message: Text("Please select valid date")
+                )
             }
         }
     }
