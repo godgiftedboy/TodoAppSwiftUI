@@ -9,7 +9,18 @@ import SwiftUI
 
 struct _ProfileView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        //Trailing Closure syntax
+        NavigationView{
+            VStack{
+                
+            }.navigationTitle("Profile")
+        }
+        //equivalent to:
+        //        NavigationView(content: {
+        //            VStack {
+        //                // Your views here
+        //            }.navigationTitle("Profile")
+        //        })
     }
 }
 
