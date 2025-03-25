@@ -7,6 +7,7 @@
 ///View model for todolist (item list)
 import Foundation
 class TodoListViewViewModel: ObservableObject{
+    @Published var showingNewItemView = false;
     init(){
     }
 }

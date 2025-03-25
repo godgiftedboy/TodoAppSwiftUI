@@ -7,6 +7,12 @@
 
 import Foundation
 class NewItemViewViewModel: ObservableObject{
+    @Published var title: String = "";
+    @Published var dueData = Date();
     init(){
+    }
+    
+    func save(){
+        //save aciton
     }
 }
