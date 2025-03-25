@@ -12,24 +12,24 @@ struct MainView: View {
     var body: some View {
         if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty{
             //signed in
-            
-            
-            TabView{
-                TodoListView()
-                    .tabItem{
-                        Label("Home",systemImage: "house")
-                    }
-                _ProfileView()
-                    .tabItem{
-                        Label("Profile",systemImage: "person.circle")
-                    }
-                
-            }
-            
+            signedInView()
         }else{
             LoginView()
         }
-        
+    }
+    
+    @ViewBuilder
+    func signedInView () -> some View{
+        TabView{
+            TodoListView(userId: viewModel.currentUserId)
+                .tabItem{
+                    Label("Home",systemImage: "house")
+                }
+            _ProfileView()
+                .tabItem{
+                    Label("Profile",systemImage: "person.circle")
+                }
+        }
     }
 }
 

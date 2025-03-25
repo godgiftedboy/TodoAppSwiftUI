@@ -9,6 +9,12 @@ import SwiftUI
 
 struct TodoListView: View {
     @StateObject var viewModel = TodoListViewViewModel();
+    
+    private let userId: String;
+    
+    init(userId: String ) {
+        self.userId = userId
+    }
     var body: some View {
         NavigationView{
             VStack{
@@ -30,5 +36,5 @@ struct TodoListView: View {
 }
 
 #Preview {
-    TodoListView()
+    TodoListView(userId: "UserID")
 }
