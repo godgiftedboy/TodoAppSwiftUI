@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct _ProfileView: View {
+    @StateObject var viewModel = ProfileViewViewModel();
     var body: some View {
         //Trailing Closure syntax
         NavigationView{
